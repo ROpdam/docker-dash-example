@@ -1,4 +1,5 @@
 import dash
+from flask import Flask
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
@@ -6,7 +7,8 @@ from dash.dependencies import Input, Output
 
 from functions import plot_regression
 
-app = dash.Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
+server = Flask(__name__)
+app = dash.Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP], server=server)
 
 app.layout = html.Div(
     [
@@ -40,3 +42,4 @@ def update_regression_plot(std):
 
 if __name__ == '__main__':
     app.run_server(host="0.0.0.0", port=8050, debug=True)
+    # app.run_server(debug=True)

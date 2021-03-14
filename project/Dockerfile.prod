@@ -8,10 +8,14 @@ WORKDIR /code
 
 COPY requirements.txt /
 
+ENV APP_HOME=/home/app/web
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
 RUN pip install -r /requirements.txt
 
 COPY ./ ./
 
-EXPOSE 8050
+ENV ENVIRONMENT prod
+ENV TESTING 0
 
-CMD ["python", "./app.py"]
+CMD gunicorn --bind 0.0.0.0:$PORT app.main:app -k uvicorn.workers.UvicornWorker

@@ -1,0 +1,11 @@
+repos:
+-   repo: https://github.com/pycqa/flake8
+    rev: 3.9.0
+    hooks:
+    -   id: flake8
+        exclude: project/app/app.py
+        args: ['--config=setup.cfg']
+-   repo: https://github.com/ambv/black
+    rev: 20.8b1
+    hooks:
+    -   id: black

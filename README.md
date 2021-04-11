@@ -1,6 +1,6 @@
 # Docker Dash Example
 A simple design for a plotly-dash app with sklearn running within a docker container
-### Using pre-commit-hooks
+### Using [pre-commit-hooks](https://pre-commit.com/)
 - flake8 
 - black
 

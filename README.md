@@ -1,5 +1,8 @@
 # Docker Dash Example
 A simple design for a plotly-dash app with sklearn running within a docker container
+### Using pre-commit-hooks
+- flake8 
+- black
 
 ### Setup
 Build the image
@@ -21,7 +24,11 @@ Go to the app on your local machine http://0.0.0.0:8050/
 │   └── app.py
 │       
 ├── .env
+├── setup.cfg
+├── .pre-commit-config.yaml
 ├── .gitignore
+│
 ├── docker-compose.yml
+│
 └── README.md
 ```

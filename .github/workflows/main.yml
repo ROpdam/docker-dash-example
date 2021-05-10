@@ -3,7 +3,7 @@ name: Continuous Integration and Delivery
 on: [push]
 
 env:
-  IMAGE: docker.pkg.gthub.com/$(echo $GITHUB_REPOSITORY | tr '[A-Z]' 'a-z]')/app
+  IMAGE: docker.pkg.github.com/$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')/app
 
 jobs:
 

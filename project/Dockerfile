@@ -14,7 +14,9 @@ RUN pip install -r /requirements.txt
 
 COPY . /usr/src/app/
 
-# EXPOSE 8050
 
-# CMD ["python", "./app/app.py"]
+# Run locally
+# CMD gunicorn --bind 0.0.0.0:8050 --chdir app/ app:server
+
+# For running on Heroku
 CMD gunicorn --bind 0.0.0.0:$PORT --chdir app/ app:server

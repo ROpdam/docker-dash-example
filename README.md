@@ -8,6 +8,7 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 ```
 ├── project
 │   ├── app
+│   │   ├── __init__.py
 │   │   ├── functions.py
 │   │   └── app.py
 │   ├── Dockerfile

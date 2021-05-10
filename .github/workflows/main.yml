@@ -23,10 +23,10 @@ jobs:
       - name: Build Image
         run: |
         docker build \
-        --cache-from ${{ env.IMAGE }}:latest \
-        --tag ${{ env.IMAGE }}:latest \
-        --file ./project/Dockerfile \
-        "./project"
+          --cache-from ${{ env.IMAGE }}:latest \
+          --tag ${{ env.IMAGE }}:latest \
+          --file ./project/Dockerfile \
+          "./project"
       - name: Push image
         run: |
         docker push ${{ env.IMAGE }}:latest

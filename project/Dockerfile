@@ -14,7 +14,7 @@ RUN pip install -r /requirements.txt
 
 COPY . /usr/src/app/
 
-EXPOSE 8050
+# EXPOSE 8050
 
-CMD ["python", "./app/app.py"]
-# CMD gunicorn --bind 0.0.0.0:$PORT app.app:server -k uvicorn.workers.UvicornWorker
+# CMD ["python", "./app/app.py"]
+CMD gunicorn --bind 0.0.0.0:$PORT --chdir app/ app:server

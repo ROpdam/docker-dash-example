@@ -1,15 +1,16 @@
 import dash
 
-# from flask import Flasks
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import flask
 
 from functions import plot_regression
 
-# server = Flask(__name__)
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = flask.Flask(__name__)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], server=server)
+server = app.server
 
 app.layout = html.Div(
     [
@@ -53,5 +54,7 @@ def update_regression_plot(std):
 
 
 if __name__ == "__main__":
-    app.run_server(host="0.0.0.0", port=8050, debug=True)
     # app.run_server(debug=True)
+
+    # To run with guvicorn go to /app and run 'guvicorn -b 0.0.0.0:8050 app:server'
+    app.run_server(host="0.0.0.0", port=8050, debug=True)

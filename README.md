@@ -1,5 +1,5 @@
 # Docker Dash Example
-A simple design for a plotly-dash app with sklearn running within a docker container
+A simple design for a plotly-dash app with sklearn running within a docker container deployed to [Heroku](https://docker-dash.herokuapp.com) using CI/CD.
 ### Using [pre-commit-hooks](https://pre-commit.com/)
 - flake8 
 - black

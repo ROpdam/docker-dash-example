@@ -22,7 +22,7 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 ```
 
 ### Run locally
-To run the image locally change
+To run the image locally change the last line in the Dockerfile from
 ```
 CMD gunicorn --bind 0.0.0.0:$PORT --chdir app/ app:server
 ```

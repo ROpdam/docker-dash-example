@@ -15,7 +15,7 @@ server = app.server
 app.layout = html.Div(
     [
         html.Div(
-            "Regression fit example",
+            "Regression fit example, request",
             style={
                 "fontSize": 28,
                 "marginLeft": "40px",

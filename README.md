@@ -9,11 +9,16 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 ├── project
 │   ├── app
 │   │   ├── __init__.py
-│   │   ├── functions.py
-│   │   └── app.py
+│   │   ├── app.py
+│   │   └── functions.py
 │   ├── Dockerfile
 │   └── requirements.txt
 │
+├── .github
+│   └── workflows
+│        └── main.yml
+│
+├── release.sh
 ├── setup.cfg
 ├── .pre-commit-config.yaml
 ├── .gitignore

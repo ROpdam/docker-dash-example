@@ -1,7 +1,6 @@
 import numpy as np
-from sklearn import linear_model
 import plotly.graph_objects as go
-
+from sklearn import linear_model
 
 _data_size = np.random.randint(100, 600)
 

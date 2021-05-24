@@ -14,9 +14,5 @@ RUN pip install -r /requirements.txt
 
 COPY . /usr/src/app/
 
-
 # Run locally
-CMD gunicorn --reload --bind 0.0.0.0:8050 --chdir app/ app:server'
-
-# For running on Heroku
-# CMD gunicorn --reload --bind 0.0.0.0:$PORT --chdir app/ app:server
+CMD gunicorn --bind 0.0.0.0:8050 --chdir app/ app:server

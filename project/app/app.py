@@ -12,21 +12,12 @@ server = app.server
 
 app.layout = html.Div(
     [
-        html.Div(
-            "Regression fit example",
-            style={
-                "fontSize": 28,
-                "marginLeft": "40px",
-                "marginBottom": "50px",
-                "font-weight": "bold",
-                "marginTop": "20px",
-            },
-        ),
+        html.Div("Regression fit example", className="title"),
         html.Div(
             [
                 dcc.Graph(id="regression_plot"),
                 html.P(
-                    "Standard Deviation", style={"color": "black", "marginLeft": "20px"}
+                    "Standard Deviation", style={"color": "white", "marginLeft": "20px"}
                 ),
                 dcc.Slider(
                     id="std_slider",
@@ -36,8 +27,7 @@ app.layout = html.Div(
                     value=10,
                     marks={i: str(i) for i in range(0, 40, 5)},
                 ),
-            ],
-            style={"background-color": "white", "color": "white"},
+            ]
         ),
     ]
 )
@@ -51,8 +41,7 @@ def update_regression_plot(std):
     return plot_regression(std)
 
 
-if __name__ == "__main__":
-    # app.run_server(debug=True)
-
-    # To run with guvicorn go to /app and run 'guvicorn -b 0.0.0.0:8050 app:server'
-    app.run_server(host="0.0.0.0", port=8050, debug=True)
+# Developing the app locally with debug=True enables
+# auto-reloading when making changes
+# if __name__ == "__main__":
+#     app.run_server(host="0.0.0.0", port=8050, debug=True)

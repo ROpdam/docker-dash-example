@@ -27,15 +27,7 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 ```
 
 ### Run locally
-To run the image locally change the last line in the Dockerfile from
-```
-CMD gunicorn --bind 0.0.0.0:$PORT --chdir app/ app:server
-```
-to
-```
-CMD gunicorn --bind 0.0.0.0:8050 --chdir app/ app:server
-```
-Then build the image
+To run the image locally, cd into the project folder and build the container:
 ```
 docker build -t docker-dash .
 ```
@@ -43,4 +35,4 @@ And run the container
 ```
 docker run -p 8050:8050 docker-dash
 ```
-You can find to the app on your local machine http://0.0.0.0:8050/
+This way the image is created using the Dockerfile, instead of the Dockerfile.prod. You can find to the app on your local machine http://0.0.0.0:8050/

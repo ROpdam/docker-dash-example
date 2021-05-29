@@ -6,8 +6,9 @@ import flask
 from dash.dependencies import Input, Output
 from functions import plot_regression
 
-server = flask.Flask(__name__)
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], server=server)
+app = dash.Dash(
+    __name__, external_stylesheets=[dbc.themes.BOOTSTRAP], server=flask.Flask(__name__)
+)
 server = app.server
 
 app.layout = html.Div(

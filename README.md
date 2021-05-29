@@ -6,6 +6,10 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 
 ### Structure
 ```
+├── .github
+│   └── workflows
+│        └── main.yml
+│
 ├── project
 │   ├── app
 │   │   ├── __init__.py
@@ -13,10 +17,6 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 │   │   └── functions.py
 │   ├── Dockerfile
 │   └── requirements.txt
-│
-├── .github
-│   └── workflows
-│        └── main.yml
 │
 ├── release.sh
 ├── setup.cfg

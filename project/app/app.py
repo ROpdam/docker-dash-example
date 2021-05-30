@@ -10,7 +10,6 @@ server = app.server
 
 app.layout = html.Div(
     [
-        html.Div("Regression fit example", className="title"),
         html.Div(
             [
                 dcc.Graph(id="regression_plot"),

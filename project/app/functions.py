@@ -8,7 +8,14 @@ fig_layout = {
     "plot_bgcolor": "black",
     "paper_bgcolor": "black",
     "title": {"font": {"size": 20, "color": "white"}},
-    "legend": {"font": {"size": 14, "color": "white"}},
+    "legend": {
+        "font": {"size": 14, "color": "white"},
+        "orientation": "h",
+        "yanchor": "bottom",
+        "y": 1.02,
+        "xanchor": "right",
+        "x": 1,
+    },
     "xaxis": {"color": "lightgray", "showgrid": False},
     "yaxis": {"color": "lightgray"},
 }
@@ -27,7 +34,7 @@ def plot_regression(std=10):
     preds = model.predict(x)
 
     layout = go.Layout(
-        title=f"Try changing standard deviation and see changes in R squared: {round(r_sq, 3)}",
+        title=f"Regression fit example with R squared: {round(r_sq, 3)}",
         height=700,
     )
     fig = go.Figure(layout=layout)

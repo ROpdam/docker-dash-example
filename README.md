@@ -14,7 +14,8 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 │   ├── app
 │   │   ├── __init__.py
 │   │   ├── app.py
-│   │   └── functions.py
+│   │   ├── functions.py
+│   │   └── assets
 │   ├── Dockerfile
 │   └── requirements.txt
 │
@@ -27,12 +28,12 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 ```
 
 ### Run locally
-To run the image locally, cd into the project folder and build the container:
+To run the image locally, cd into the docker-dash-example folder and:
 ```
-docker build -t docker-dash .
+docker build -t docker-dash project/.
 ```
 And run the container
 ```
 docker run -p 8050:8050 docker-dash
 ```
-This way the image is created using the Dockerfile, instead of the Dockerfile.prod. You can find to the app on your local machine http://0.0.0.0:8050/
+You can find to the app on your local machine http://0.0.0.0:8050/. This way the image is created using the Dockerfile, instead of the Dockerfile.prod. 

@@ -17,6 +17,7 @@ A simple design for a plotly-dash app with sklearn running within a docker conta
 │   │   ├── functions.py
 │   │   └── assets
 │   ├── Dockerfile
+│   ├── Dockerfile.prod
 │   └── requirements.txt
 │
 ├── release.sh

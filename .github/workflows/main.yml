@@ -50,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull image
         run: |
-          docker pull ${{ secrets.GITHUB_TOKEN }}:latest || true
+          docker pull ${{ env.IMAGE }}:latest || true
       - name: Build image
         run: |
           docker build \

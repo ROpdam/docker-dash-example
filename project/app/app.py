@@ -14,7 +14,8 @@ app.layout = html.Div(
             [
                 dcc.Graph(id="regression_plot"),
                 html.P(
-                    "Standard Deviation", style={"color": "white", "marginLeft": "20px"}
+                    "Standard Deviation, try changing it!",
+                    style={"color": "white", "marginLeft": "20px"},
                 ),
                 dcc.Slider(
                     id="std_slider",

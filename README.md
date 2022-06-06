@@ -2,6 +2,9 @@
 A simple design for a plotly-dash app with sklearn running within a docker container deployed to [Heroku](https://docker-dash.herokuapp.com) using CI/CD. [![Continuous Integration and Delivery](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml) 
  
 For a deep dive on the implementation please see [my Medium article](https://towardsdatascience.com/deploy-containeriazed-plotly-dash-app-to-heroku-with-ci-cd-f82ca833375c)
+ 
+Inspired by [This TDD Course](https://testdriven.io/courses/tdd-fastapi/)
+ 
 ### Using [pre-commit-hooks](https://pre-commit.com/)
 - flake8 
 - black

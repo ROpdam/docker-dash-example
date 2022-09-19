@@ -1,4 +1,5 @@
 # Docker Dash Example
+- Note: hotfix for werkzeug issue [#1992](https://github.com/plotly/dash/issues/1992)
 A simple design for a plotly-dash app with sklearn running within a docker container deployed to [Heroku](https://docker-dash.herokuapp.com) using CI/CD. [![Continuous Integration and Delivery](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml) 
  
 For a deep dive on the implementation please see [my Medium article](https://towardsdatascience.com/deploy-containeriazed-plotly-dash-app-to-heroku-with-ci-cd-f82ca833375c)
@@ -43,4 +44,4 @@ And run the container
 ```
 docker run -p 8050:8050 docker-dash
 ```
-You can find to the app on your local machine http://0.0.0.0:8050/. This way the image is created using the Dockerfile, instead of the Dockerfile.prod. 
+You can find to the app on your local machine http://localhost:8050/ (or localhost:8050). This way the image is created using the Dockerfile, instead of the Dockerfile.prod.

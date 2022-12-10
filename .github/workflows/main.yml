@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2
       - name: Log in to Github Packages
         run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
         env:
@@ -43,7 +43,7 @@ jobs:
       HEROKU_REGISTRY_IMAGE: registry.heroku.com/${HEROKU_APP_NAME}/app
     steps:
       - name: Checkout master
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2
       - name: Log in to Github Packages
         run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
         env: 

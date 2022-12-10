@@ -1,11 +1,9 @@
-import dash
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from functions import plot_regression
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
 app.layout = html.Div(
@@ -35,11 +33,11 @@ app.layout = html.Div(
     Output(component_id="regression_plot", component_property="figure"),
     [Input(component_id="std_slider", component_property="value")],
 )
-def update_regression_plot(std):
+def update_regression_plot(std: int) -> None:
     return plot_regression(std)
 
 
 # Developing the app locally with debug=True enables
 # auto-reloading when making changes
 # if __name__ == "__main__":
-#     app.run_server(host="0.0.0.0", port=8050, debug=True)
+# app.run_server(host="0.0.0.0", port=8050, debug=True)

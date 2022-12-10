@@ -1,6 +1,6 @@
 #From https://towardsdatascience.com/docker-for-python-dash-r-shiny-6097c8998506
 
-FROM python:3.8.6-slim-buster
+FROM python:3.9-slim-buster
 
 LABEL maintainer "Robin Opdam, robinopdam@hotmail.com"
 

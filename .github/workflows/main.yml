@@ -62,6 +62,6 @@ jobs:
     - name: Checkout master
       uses: actions/checkout@v3
     - name: Push to registry
-      uses: docker push ${{ env.IMAGE_NAME }}
+      run: docker push ${{ env.IMAGE_NAME }}
     - name: Deploy container
       uses: gcloud run deploy ${{ env.GCP_PROJECT_ID }} --image ${{ env.IMAGE_NAME }} --region europe-north1 --platform managed

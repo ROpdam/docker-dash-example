@@ -73,5 +73,5 @@ jobs:
       with:
         image: ${{ env.IMAGE_NAME }}
         region: europe-north1
-      service: app
+        service: app
         flags: --port=8080

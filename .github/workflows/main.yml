@@ -41,12 +41,6 @@ jobs:
     env:
       IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
     steps:
-    - name: Login to Google Cloud
-      uses: google-github-actions/setup-gcloud@v1
-      with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_email: ${{ secrets.GCP_EMAIL }}
-        service_account_key: ${{ secrets.GCP_CREDENTIALS }}
     - name: Checkout master
       uses: actions/checkout@v3
     - name: Log in to Github Packages
@@ -63,6 +57,10 @@ jobs:
         --tag ${{ env.IMAGE_NAME }}:latest \
         --file ./project/Dockerfile.prod \
         "./project"
+    - name: Login to Google Cloud
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
     - name: Configure Docker
       run: gcloud auth configure-docker --quiet
     - name: Push to registry

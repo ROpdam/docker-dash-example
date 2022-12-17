@@ -61,7 +61,7 @@ jobs:
         docker build \
         --cache-from ${{ env.IMAGE }}:latest \
         --tag ${{ env.IMAGE_NAME }}:latest \
-        --file .project/Dockerfile.prod \
+        --file ./project/Dockerfile.prod \
         "./project"
     - name: Configure Docker
       run: gcloud auth configure-docker --quiet

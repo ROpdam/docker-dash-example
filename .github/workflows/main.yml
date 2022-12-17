@@ -54,10 +54,16 @@ jobs:
       run: |
         docker build \
         --cache-from ${{ env.IMAGE }}:latest \
-        --tag ${{ env.IMAGE_NAME }} \
+        --tag ${{ env.IMAGE_NAME }}:latest \
         --file .project/Dockerfile.prod \
         "./project"
-    - name: Log in to Google Cloud
+    - name: Login to Google Cloud
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_email: ${{ secrets.GCP_EMAIL }}
+        service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+    - name: Configure Docker
       run: gcloud auth configure-docker --quiet
     - name: Checkout master
       uses: actions/checkout@v3

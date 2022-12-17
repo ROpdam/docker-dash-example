@@ -1,1 +1,5 @@
-RSA
+{
+    "type": "service_account",
+    "project_id": "docker-dash-hobby",
+    "private_key_id": "ytr7483oqfh7o8e3qhgff389hf"
+}

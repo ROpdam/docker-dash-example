@@ -58,7 +58,7 @@ jobs:
         --file ./project/Dockerfile.prod \
         "./project"
     - name: Login to Google Cloud
-      uses: google-github-actions/setup-gcloud@v1
+      uses: google-github-actions/auth@v1
       with:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
     - name: Configure Docker

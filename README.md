@@ -1,9 +1,10 @@
 - **Note:** hotfix for werkzeug issue [#1992](https://github.com/plotly/dash/issues/1992) in place
+- **Note:** changed deployment from Heroku to Google Cloud Run
 
 # Docker Dash Example
-A simple design for a plotly-dash app with sklearn running within a docker container deployed to [Heroku](https://docker-dash.herokuapp.com) using CI/CD. [![Continuous Integration and Delivery](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml) 
+A simple design for a plotly-dash app with sklearn running within a docker container deployed to [Google Cloud Run](https://docker-dash-hobby-gcp3uettpa-uc.a.run.app/) using CI/CD. [![Continuous Integration and Delivery](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml) 
  
-For a deep dive on the implementation please see [my Medium article](https://towardsdatascience.com/deploy-containeriazed-plotly-dash-app-to-heroku-with-ci-cd-f82ca833375c)
+For a deep dive on the implementation please see [my Medium article](https://towardsdatascience.com/deploy-containeriazed-plotly-dash-app-to-heroku-with-ci-cd-f82ca833375c). Please see the edit at the bottom to understand the deployment to Google Cloud Run
  
 Inspired by [This TDD Course](https://testdriven.io/courses/tdd-fastapi/)
  
@@ -11,6 +12,7 @@ Inspired by [This TDD Course](https://testdriven.io/courses/tdd-fastapi/)
 - flake8 
 - black
 - isort
+- detect-private-key
 
 ### Structure
 ```

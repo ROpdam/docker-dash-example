@@ -82,4 +82,4 @@ jobs:
       IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
     steps:
     - name: Clean up old images
-      run: gcloud container images list-tags {{ env.IMAGE_NAME }} --filter='-tags:*' --format="get(digest)" --limit=10 > tags && while read p; do gcloud container images delete "{{ env.IMAGE_NAME }}@$p" --quiet; done < tags
+      run: gcloud container images list-tags ${{ env.IMAGE_NAME }} --filter='-tags:*' --format="get(digest)" --limit=10 > tags && while read p; do gcloud container images delete "${{ env.IMAGE_NAME }}@$p" --quiet; done < tags

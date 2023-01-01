@@ -2,9 +2,11 @@
 - **Note:** changed deployment from Heroku to Google Cloud Run
 
 # Docker Dash Example
-A simple design for a plotly-dash app with sklearn running within a docker container deployed to [Google Cloud Run](https://app-gcp3uettpa-lz.a.run.app) using CI/CD. [![Continuous Integration and Delivery](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml) 
+A simple design for a plotly-dash app with sklearn running within a docker container deployed to [Google Cloud Run](https://docker-dash-example.com/) using CI/CD. [![Continuous Integration and Delivery](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ROpdam/docker-dash-example/actions/workflows/main.yml) 
  
-For a deep dive on the implementation please see [my Medium article](https://towardsdatascience.com/deploy-containeriazed-plotly-dash-app-to-heroku-with-ci-cd-f82ca833375c). Please see the edit at the bottom to understand the deployment to Google Cloud Run
+For a deep dive on the implementation please see:
+1. [Initial deployment through Heroku](https://towardsdatascience.com/deploy-containeriazed-plotly-dash-app-to-heroku-with-ci-cd-f82ca833375c). 
+2. [Current deployment to GCP through Google Cloud Run](TO BE ADDED)
  
 Inspired by [This TDD Course](https://testdriven.io/courses/tdd-fastapi/)
  

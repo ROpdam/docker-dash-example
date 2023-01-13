@@ -1,53 +1,127 @@
+import json
+from typing import Union
+
 import numpy as np
 import plotly.graph_objects as go
 from sklearn import linear_model
 
 _data_size = np.random.randint(200, 600)
 
-fig_layout = {
-    "plot_bgcolor": "black",
-    "paper_bgcolor": "black",
-    "title": {"font": {"size": 20, "color": "white"}},
-    "legend": {
-        "font": {"size": 14, "color": "white"},
-        "orientation": "h",
-        "yanchor": "bottom",
-        "y": 1.02,
-        "xanchor": "right",
-        "x": 1,
-    },
-    "xaxis": {"color": "lightgray", "showgrid": False},
-    "yaxis": {"color": "lightgray"},
-}
 
+def create_data(std: float) -> np.array:
+    """Create x based on std and ceate a related y
 
-def plot_regression(std=10):
-    _x_og = np.arange(0, _data_size)
-    x = _x_og.reshape((-1, 1))
-    y = _x_og * (
-        np.full(shape=_data_size, fill_value=1, dtype=np.int)
-        + np.random.normal(size=_data_size, loc=1, scale=std / 10)
+    Args:
+        std (float): standard deviation
+
+    Returns:
+        np.array: x and y stacked
+    """
+    x = np.arange(0, 10)
+    y = x * (
+        np.full(shape=10, fill_value=1, dtype=np.int)
+        + np.random.normal(size=10, loc=1, scale=1 / 10)
     )
+    data = np.stack([x, y])[0, :]
+
+    return data
+
+
+def create_lr_preds(data: np.array, std: float) -> Union[float, np.array]:
+    """
+    Creates random data based on input std and fits a linear
+    regression model through this data
+
+    Args:
+        std (float): standard deviation for random data
+        x (np.array): randomly generated std
+
+    Returns:
+        r_sq: R squared of the linear regression model
+        preds: np.array with the predicitons
+    """
+    x = data[0, :]
+    y = data[1, :]
 
     model = linear_model.LinearRegression().fit(x, y)
     r_sq = model.score(x, y)
     preds = model.predict(x)
 
+    return r_sq, preds
+
+
+def create_figure(**kwds: np.array) -> go.Figure:
+    """Create a go.Figure plot using input data x and
+    predicitons preds
+
+    Args:
+        x (np.array): input data
+        preds (np.array): predictions
+
+    Returns:
+        go.Figure: plot showing input
+        data (dots) and predictions (line)
+    """
     layout = go.Layout(
-        title=f"Regression fit example with R squared: {round(r_sq, 3)}",
+        title=f"Regression fit example with R squared: {round(kwds['r_sq'], 3)}",
         height=700,
     )
     fig = go.Figure(layout=layout)
 
     fig.add_trace(
         go.Scatter(
-            x=_x_og,
-            y=y,
+            x=kwds["x"],
+            y=kwds["y"],
             mode="markers",
-            name=f"x * (1 + rand_norm(mean=1, std={std}/10))",
+            name=f"x * (1 + rand_norm(mean=1, std={kwds['std']}/10))",
         )
     )
-    fig.add_trace(go.Scatter(x=_x_og, y=preds, mode="lines", name="linear regression"))
+    fig.add_trace(
+        go.Scatter(x=kwds["x"], y=kwds["preds"], mode="lines", name="linear regression")
+    )
+
+    return fig
+
+
+def style_figure(fig: go.Figure) -> go.Figure:
+    """Style the figure according to the fig_layout.json
+
+    Args:
+        fig (go.Figure): Figure
+
+    Returns:
+        go.Figure: styled figure
+    """
+    f = open("assets/fig_layout.json")
+    fig_layout = json.load(f)
+
     fig.update_layout(fig_layout)
+
+    return fig
+
+
+def plot_regression(std: float = 10) -> go.Figure:
+    """Create a regression plot from random input data
+    that varies with the standard deviation input
+
+    Args:
+        std (float, optional): standard deviation. Defaults to 10.
+
+    Returns:
+        go.Figure: go.Figure: plot showing input
+        data (dots) and predictions (line)
+    """
+    data = create_data(std)
+    r_sq, preds = create_lr_preds(data, std)
+    fig_input = {
+        "std": std,
+        "x": data[0, :],
+        "y": data[1, :],
+        "preds": preds,
+        "r_sq": r_sq,
+    }
+
+    fig = create_figure(fig_input)
+    fig = style_figure(fig)
 
     return fig

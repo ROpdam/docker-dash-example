@@ -34,10 +34,48 @@ jobs:
         run: |
           docker push ${{ env.IMAGE }}:latest
   
+  test:
+    name: Test Docker Image
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+      - name: Log in to GitHub Packages
+        run: echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin docker.pkg.github.com
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull images
+        run: |
+          docker pull ${{ env.IMAGE }}-final:latest || true
+      - name: Build images
+        run: |
+          docker build \
+            --cache-from ${{ env.IMAGE }}-final:latest \
+            --tag ${{ env.IMAGE }}-final:latest \
+            --file ./project/Dockerfile.prod \
+            "./project"
+      - name: Run container
+        run: |
+          docker run \
+            -d \
+            --name docker-dash \
+            ${{ env.IMAGE }}-final:latest
+      - name: Install requirements
+        run: docker exec docker-dash pip install black==22.12.0 flake8===6.0.0 isort==v4.4.0 pytest==7.2.1 bandit==1.7.4
+      # - name: Pytest
+      #   run: docker exec docker-dash python -m pytest .
+      - name: Flake8
+        run: docker exec docker-dash python -m flake8 .
+      - name: Black
+        run: docker exec docker-dash python -m black . --check
+      - name: isort
+        run: docker exec docker-dash python -m isort . --check-only
+  
   deploy:
     name: Deploy to Google Cloud Run
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [build, test]
     env:
       IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
     steps:

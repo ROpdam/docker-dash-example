@@ -5,7 +5,7 @@ import numpy as np
 import plotly.graph_objects as go
 from sklearn import linear_model
 
-_data_size = np.random.randint(200, 600)
+_data_size = 1000
 
 
 def create_data(std: float) -> np.array:
@@ -17,12 +17,10 @@ def create_data(std: float) -> np.array:
     Returns:
         np.array: x and y stacked
     """
-    x = np.arange(0, 10)
-    y = x * (
-        np.full(shape=10, fill_value=1, dtype=np.int)
-        + np.random.normal(size=10, loc=1, scale=1 / 10)
-    )
-    data = np.stack([x, y])[0, :]
+    x = np.arange(0, _data_size)
+    noise = np.random.normal(size=_data_size, loc=1, scale=std / 10)
+    y = x * (1 + noise)
+    data = np.stack([x, y])
 
     return data
 
@@ -40,7 +38,7 @@ def create_lr_preds(data: np.array, std: float) -> Union[float, np.array]:
         r_sq: R squared of the linear regression model
         preds: np.array with the predicitons
     """
-    x = data[0, :]
+    x = data[0, :].reshape(-1, 1)
     y = data[1, :]
 
     model = linear_model.LinearRegression().fit(x, y)
@@ -50,7 +48,7 @@ def create_lr_preds(data: np.array, std: float) -> Union[float, np.array]:
     return r_sq, preds
 
 
-def create_figure(**kwds: np.array) -> go.Figure:
+def create_figure(**kwds) -> go.Figure:
     """Create a go.Figure plot using input data x and
     predicitons preds
 
@@ -113,15 +111,8 @@ def plot_regression(std: float = 10) -> go.Figure:
     """
     data = create_data(std)
     r_sq, preds = create_lr_preds(data, std)
-    fig_input = {
-        "std": std,
-        "x": data[0, :],
-        "y": data[1, :],
-        "preds": preds,
-        "r_sq": r_sq,
-    }
 
-    fig = create_figure(fig_input)
+    fig = create_figure(std=std, r_sq=r_sq, x=data[0, :], y=data[1, :], preds=preds)
     fig = style_figure(fig)
 
     return fig

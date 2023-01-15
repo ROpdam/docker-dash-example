@@ -39,5 +39,5 @@ def update_regression_plot(std: int) -> None:
 
 # Developing the app locally with debug=True enables
 # auto-reloading when making changes
-# if __name__ == "__main__":
-# app.run_server(host="0.0.0.0", port=8050, debug=True)
+if __name__ == "__main__":
+    app.run_server(host="0.0.0.0", port=8050, debug=True)

@@ -1,0 +1,28 @@
+{
+    "plot_bgcolor": "black",
+    "paper_bgcolor": "black",
+    "title": {
+        "font": {
+            "size": 20,
+            "color": "white"
+        }
+    },
+    "legend": {
+        "font": {
+            "size": 14,
+            "color": "white"
+        },
+        "orientation": "h",
+        "yanchor": "bottom",
+        "y": 1.02,
+        "xanchor": "right",
+        "x": 1
+    },
+    "xaxis": {
+        "color": "lightgray",
+        "showgrid": false
+    },
+    "yaxis": {
+        "color": "lightgray"
+    }
+}

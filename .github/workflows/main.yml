@@ -60,6 +60,7 @@ jobs:
           docker run \
             -d \
             --name docker-dash \
+            -e PORT=8050 \
             -p 8050:8050 \
             ${{ env.IMAGE }}:latest
       - name: Install requirements

@@ -68,7 +68,7 @@ jobs:
       - name: Pytest
         run: docker exec docker-dash python -m pytest .
       - name: Flake8
-        run: docker exec docker-dash python -m flake8 .
+        run: docker exec docker-dash python -m flake8 --max-line-length=119 .
       - name: Black
         run: docker exec docker-dash python -m black . --check
       - name: isort

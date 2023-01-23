@@ -11,10 +11,11 @@ For a deep dive on the implementation please see:
 Inspired by [This TDD Course](https://testdriven.io/courses/tdd-fastapi/)
  
 ### Using [pre-commit-hooks](https://pre-commit.com/)
-- flake8 
-- black
-- isort
-- detect-private-key
+- [flake8](https://github.com/pycqa/flake8)
+- [black](https://github.com/ambv/black)
+- [isort](https://github.com/pycqa/isort)
+- [detect-private-key](https://github.com/pre-commit/pre-commit-hooks#detect-private-key)
+- [bandit](https://github.com/PyCQA/bandit)
 
 ### Structure
 ```
@@ -28,6 +29,8 @@ Inspired by [This TDD Course](https://testdriven.io/courses/tdd-fastapi/)
 │   │   ├── app.py
 │   │   ├── functions.py
 │   │   └── assets
+│   ├── tests
+│   │   └── test_functions.py
 │   ├── Dockerfile
 │   ├── Dockerfile.prod
 │   └── requirements.txt
